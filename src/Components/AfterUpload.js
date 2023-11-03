@@ -79,13 +79,20 @@ export const AfterUpload = () => {
 		}
 	  };
 
-	  const downloadSingleImage = async (file, index) => {
-		if (response.isPresent && file && index != null) {
-		  // 가정: 'file'은 Blob이나 File 객체입니다. 이것은 압축 후의 파일이어야 합니다.
-		  // 파일에 대한 참조가 없다면, 다운로드 로직을 변경해야 할 수 있습니다.
-		  console.log(file)
-		  saveAs(file, `compressed-${index}-${uuid()}.zip`);
-		}
+	  const downloadSingleImage = async (fileName) => {
+		if (response.isPresent && folderRef.current) {
+			try {
+			  const file = folderRef.current.file(fileName);
+			  if (file) {
+				const blob = await file.async('blob');
+				saveAs(blob, fileName);
+			  } else {
+				console.error('File not found in zip:', fileName);
+			  }
+			} catch (error) {
+			  console.error('Error downloading file:', fileName, error);
+			}
+		  }
 	  };
 	return (
 		<div className='AfterUpload'>
@@ -121,7 +128,7 @@ export const AfterUpload = () => {
 								<ProcessFile file={el} />
 								{response.isPresent ? (
 									<div
-										onClick={() => downloadSingleImage(el, idx)}
+										onClick={() => downloadSingleImage(data.files[idx].name)}
 										style={{
 											marginTop: -35,
 											display: 'flex',

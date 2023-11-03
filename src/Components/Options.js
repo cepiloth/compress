@@ -258,7 +258,6 @@ export const Options = () => {
 				<div className='optionText'>Restrictions</div>
 				<div>Max 10 images at a time.</div>
 				<div>Max 50MB total image size.</div>
-				<div>All Images will be deleted in 1 hour.</div>
 			</Grid>
 		</div>
 	);

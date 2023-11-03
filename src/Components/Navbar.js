@@ -10,13 +10,10 @@ export const Navbar = () => {
 					<li className='navBrand'>Compressio</li>
 				</a>
 				<div className='navItem'>
-					<a className='donateAnc' href='https://www.paypal.me/abdullahchoudhary'>
-						<li className='donate'>Donate</li>
-					</a>
 					<a className='contactAnc' href='https://www.linkedin.com/in/abdullahchoudhary/'>
 						<li className='contact'>Contact</li>
 					</a>
-					<a href='https://github.com/twoabd/CompressioAPI'>
+					<a href='https://github.com/cepiloth'>
 						<li>
 							{' '}
 							<i style={{ color: '#1f2937' }} className='fab fa-github'></i>

@@ -254,11 +254,6 @@ export const Options = () => {
 					</Grid>
 				</Grid>
 			</Grid>
-			<Grid pt={5} pb={10}>
-				<div className='optionText'>Restrictions</div>
-				<div>Max 10 images at a time.</div>
-				<div>Max 50MB total image size.</div>
-			</Grid>
 		</div>
 	);
 };

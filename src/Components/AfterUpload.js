@@ -9,6 +9,7 @@ import { saveAs } from 'file-saver';
 import { v4 as uuid } from 'uuid';
 import imageCompression from 'browser-image-compression'
 import JSZip from 'jszip';
+import prettyBytes from 'pretty-bytes';
 
 const ProcessFile = ({ file }) => {
 	const [src, setSrc] = React.useState(null);
@@ -39,8 +40,8 @@ export const AfterUpload = () => {
 
 	const compressHandler = async () => {
 		console.log('compressHandler');
-		setResponse({ ...response, loading: true });
-		const responseArr = [];
+		setResponse(prev => ({ ...prev, loading: true }));
+	  
 		const sizeAfter = [];
 		const zip = new JSZip();
 		folderRef.current = zip.folder('collection');
@@ -50,21 +51,25 @@ export const AfterUpload = () => {
 			maxWidthOrHeight: 1920,
 			useWebWorker: true,
 		  };
-		  const compressedFiles = await Promise.all(data.files.map(async (file, idx) => {
-			try {
-			  const compressedFile = await imageCompression(file, options);
-			  sizeAfter.push((compressedFile.size / 1024 / 1024).toFixed(2) + ' MB')
-			  sizeRef.current = sizeAfter;
-			  folderRef.current.file(`${data.files[idx].name}`, compressedFile, { binary: true });
-			} catch (error) {
-			  console.log(error);
-			}
-		  }));
+		  const images = data.files.map((file) => imageCompression(file, options));
+		  const compressedFiles = await Promise.all(images);
 	  
-		  setResponse({ isPresent: true, loading: false });
+		  compressedFiles.forEach((compressedFile, idx) => {
+			sizeAfter.push(compressedFile.size);
+			console.log('none : ' + prettyBytes(data.files[idx].size) + ' / after : ' + prettyBytes(compressedFile.size));
+			folderRef.current.file(`${data.files[idx].name}`, compressedFile, { binary: true });
+		  });
+	  
+		  sizeRef.current = sizeAfter; // Update the sizeRef after all files are processed
+		  setResponse(prev => ({ ...prev, loading: false, isPresent: true })); // Update the response state
 		} catch (error) {
-		  console.log(error);
-		  setResponse({ ...response, isError: true, errorCode: error });
+		  console.error(error);
+		  setResponse({
+			isPresent: false,
+			loading: false,
+			isError: true,
+			errorCode: error.code || 'UNKNOWN_ERROR', // Use a more specific error property if available
+		  });
 		}
 	  };
 
@@ -74,6 +79,14 @@ export const AfterUpload = () => {
 		}
 	  };
 
+	  const downloadSingleImage = async (file, index) => {
+		if (response.isPresent && file && index != null) {
+		  // 가정: 'file'은 Blob이나 File 객체입니다. 이것은 압축 후의 파일이어야 합니다.
+		  // 파일에 대한 참조가 없다면, 다운로드 로직을 변경해야 할 수 있습니다.
+		  console.log(file)
+		  saveAs(file, `compressed-${index}-${uuid()}.zip`);
+		}
+	  };
 	return (
 		<div className='AfterUpload'>
 			{response.isError ? (
@@ -101,14 +114,14 @@ export const AfterUpload = () => {
 								<div className='fileName'>{el.name}</div>
 								<div className='fileSize' style={{ marginBottom: 4 }}>
 									<span className='sizeBefore' style={{ textDecoration: response.isPresent ? 'line-through' : 'none' }}>
-										{(el.size / 1024 / 1024).toFixed(2) + ' MB'}
+										{prettyBytes(el.size)}
 									</span>
-									{response.isPresent ? <span className='sizeAfter'>&nbsp; - &nbsp;{sizeRef.current[idx]}</span> : ''}
+									{response.isPresent ? <span className='sizeAfter'>&nbsp; - &nbsp;{prettyBytes(sizeRef.current[idx])}</span> : ''}
 								</div>
 								<ProcessFile file={el} />
 								{response.isPresent ? (
 									<div
-										onClick={() => downloadImages(el, idx)}
+										onClick={() => downloadSingleImage(el, idx)}
 										style={{
 											marginTop: -35,
 											display: 'flex',

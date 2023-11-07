@@ -26,7 +26,6 @@ export const UploadFiles = () => {
 	const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: 'image/jpeg, image/png, image/gif, image/svg+xml' });
 	return (
 		<>
-			
 			{data.totalFiles > 0 ? <AfterUpload /> : <BeforeUpload getInputProps={getInputProps} getRootProps={getRootProps} />}
 			{isError && <Alert severity="error">This is an error alert — check it out!</Alert>}
 		</>

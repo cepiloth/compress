@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useState } from 'react';
 import { BeforeUpload } from './BeforeUpload';
 import { AfterUpload } from './AfterUpload';
+import { AlertDialogSlide } from './AlertDialogSlide';
 import { useDropzone } from 'react-dropzone';
 import { ImageContext } from '../context/ImageContext';
 import Alert from '@mui/material/Alert';
@@ -18,7 +19,7 @@ export const UploadFiles = () => {
 				setIsError(true)
 				setTimeout(() => {
 					setIsError(false);
-				}, 2000);
+				}, 5000);
 			}
 		},
 		[dispatch],
@@ -27,6 +28,7 @@ export const UploadFiles = () => {
 	return (
 		<>
 			{data.totalFiles > 0 ? <AfterUpload /> : <BeforeUpload getInputProps={getInputProps} getRootProps={getRootProps} />}
+			{isError && <AlertDialogSlide description="최대 10개의 이미지만 가능합니다."></AlertDialogSlide>}
 			{isError && <Alert severity="error">최대 10개의 이미지만 가능합니다.</Alert>}
 		</>
 	);

@@ -11,7 +11,7 @@ export const UploadFiles = () => {
 	const [isError, setIsError] = useState(false); // isError를 상태로 선언
 	const onDrop = useCallback(
 		(Uploadedfiles) => {
-			if (Uploadedfiles.length > 0 && Uploadedfiles.length < 11) {
+			if (Uploadedfiles.length > 0 && Uploadedfiles.length < 31) {
 				dispatch({ type: 'add-file', payload: Uploadedfiles });
 			} 
 			else 
@@ -28,8 +28,8 @@ export const UploadFiles = () => {
 	return (
 		<>
 			{data.totalFiles > 0 ? <AfterUpload /> : <BeforeUpload getInputProps={getInputProps} getRootProps={getRootProps} />}
-			{isError && <AlertDialogSlide description="최대 10개의 이미지만 가능합니다."></AlertDialogSlide>}
-			{isError && <Alert severity="error">최대 10개의 이미지만 가능합니다.</Alert>}
+			{isError && <AlertDialogSlide description="최대 30개의 이미지만 가능합니다."></AlertDialogSlide>}
+			{isError && <Alert severity="error">최대 30개의 이미지만 가능합니다.</Alert>}
 		</>
 	);
 };

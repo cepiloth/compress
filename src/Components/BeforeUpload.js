@@ -19,10 +19,9 @@ export const BeforeUpload = ({ getInputProps, getRootProps }) => {
 			<button className='uploadButton'>
 				<div className='buttonContainer'>
 					<i style={{ marginTop: 3 }} className='fas fa-folder'></i>
-					<div className='browseBtn'>Browse...</div>
+					<div className='browseBtn'>이미지 선택</div>
 				</div>
 			</button>
-			<div className='uploadText-2-rem'>여기에 여러 이미지 놓기</div>
 		</div>
 	);
 };

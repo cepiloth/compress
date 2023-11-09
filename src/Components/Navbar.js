@@ -7,7 +7,7 @@ export const Navbar = () => {
 			<ul>
 				{/* //<li className='navBrand'>Compressio</li> */}
 				<a className='navBrandHref' href='/'>
-					<li className='navBrand'>Compressio</li>
+					<li className='navBrand'>아이♥임이지</li>
 				</a>
 				<div className='navItem'>
 					<a className='contactAnc' href='https://www.linkedin.com/in/%EC%9E%AC%ED%9B%88-%EC%9E%84-671958a3/'>
@@ -19,7 +19,6 @@ export const Navbar = () => {
 							<i style={{ color: '#1f2937' }} className='fab fa-github'></i>
 						</li>
 					</a>
-					{' '}
 				</div>
 			</ul>
 		</nav>

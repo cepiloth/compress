@@ -27,7 +27,7 @@ export const UploadFiles = () => {
 	return (
 		<>
 			{data.totalFiles > 0 ? <AfterUpload /> : <BeforeUpload getInputProps={getInputProps} getRootProps={getRootProps} />}
-			{isError && <Alert severity="error">This is an error alert — check it out!</Alert>}
+			{isError && <Alert severity="error">최대 10개의 이미지만 가능합니다.</Alert>}
 		</>
 	);
 };

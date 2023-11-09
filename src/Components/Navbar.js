@@ -10,7 +10,7 @@ export const Navbar = () => {
 					<li className='navBrand'>Compressio</li>
 				</a>
 				<div className='navItem'>
-					<a className='contactAnc' href='https://www.linkedin.com/in/abdullahchoudhary/'>
+					<a className='contactAnc' href='https://www.linkedin.com/in/%EC%9E%AC%ED%9B%88-%EC%9E%84-671958a3/'>
 						<li className='contact'>Contact</li>
 					</a>
 					<a href='https://github.com/cepiloth'>

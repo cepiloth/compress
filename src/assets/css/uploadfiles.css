@@ -1,9 +1,10 @@
-.logo{
+.logo {
     width: 130px;
     height: auto;
     opacity: .5;
 }
-.line{
+
+.line {
     width: 12vw;
     height: 2px;
     opacity: .1;
@@ -16,42 +17,71 @@
     margin-left: 6px;
 }
 
-.uploadButton{
+.uploadButton {
     background-color: #8b5cf6;
     border: none;
     font-size: 0.9rem;
     cursor: pointer;
-    border-radius:6px;
+    border-radius: 6px;
     color: white;
     font-weight: 600;
     padding: 0.5rem 1.2rem;
 }
-.uploadButton:hover{
+
+.uploadButton:hover {
     background-color: #8251f7;
 }
-.buttonContainer{
+
+.buttonContainer {
     display: flex;
 }
-.orText{
+
+.orText {
     color: #1f2937;
     font-size: medium;
     margin: 0 1rem;
     font-size: 1rem;
 }
-.uploadText{
-    color:#1f2937;
+
+.uploadText {
+    font-weight: 600;
+    color: #1f2937;
     font-size: 1.5rem;
 }
-.or{
+
+.uploadText-1-rem {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    direction: ltr;
+    text-align: center;
+    box-sizing: inherit;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    max-width: 800px;
+    margin: 8px auto 0;
+    line-height: 8px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #47474f;
+    @media (max-width: 800px) {
+        font-size: 16px;
+        line-height: 16px;
+    }
+}
+
+.or {
     display: flex;
     align-items: center;
     justify-content: space-between;
     /* width: ; */
 }
-.uploadFiles{
+
+.uploadFiles {
     display: flex;
     min-height: 20rem;
-    height:fit-content;
+    height: fit-content;
     padding: 5rem 0;
     background-color: #f1f5f9;
     justify-content: space-between;
@@ -61,4 +91,5 @@
     border: 2px #1f2937 dashed;
     border-color: #cbd5e1;
     border-radius: 5px;
+    cursor: pointer;
 }

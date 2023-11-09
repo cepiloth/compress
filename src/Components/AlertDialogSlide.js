@@ -28,7 +28,7 @@ export const AlertDialogSlide = (props) => {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>{"잘못된 요청"}</DialogTitle>
+        <DialogTitle>{"잘못 된 요청"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
             {props.description}

@@ -8,7 +8,9 @@ export const BeforeUpload = ({ getInputProps, getRootProps }) => {
 		<div className='uploadFiles' {...getRootProps()}>
 			<input {...getInputProps()} />
 			<img className='logo' src={Logo} alt='Hello' />
-			<div className='uploadText'>Drop files here</div>
+			<div className='uploadText'>이미지 압축</div>
+			<div className='uploadText-1-rem'>최고의 해상도로 이미지를 압축하세요</div>
+			<div className='uploadText-1-rem'>온라인에서 한 번은 많은 이미지 파일 크기를 줄이세요</div>
 			<div className='or'>
 				<div className='line'></div>
 				<div className='orText'>OR</div>
@@ -20,6 +22,7 @@ export const BeforeUpload = ({ getInputProps, getRootProps }) => {
 					<div className='browseBtn'>Browse...</div>
 				</div>
 			</button>
+			<div className='uploadText-2-rem'>여기에 여러 이미지 놓기</div>
 		</div>
 	);
 };

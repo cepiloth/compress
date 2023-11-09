@@ -5,7 +5,6 @@ import { useReducer } from 'react';
 import { UploadFiles } from './Components/UploadFiles';
 import { Navbar } from './Components/Navbar';
 import { ImageContext } from './context/ImageContext';
-import { Options } from './Components/Options';
 
 const Reducer = (state, action) => {
 	switch (action.type) {
@@ -46,7 +45,6 @@ function App() {
 			<Navbar />
 			<div className='App'>
 				<UploadFiles />
-				<Options />
 			</div>
 		</ImageContext.Provider>
 	);

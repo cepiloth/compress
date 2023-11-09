@@ -19,6 +19,7 @@ export const Navbar = () => {
 							<i style={{ color: '#1f2937' }} className='fab fa-github'></i>
 						</li>
 					</a>
+					{' '}
 				</div>
 			</ul>
 		</nav>

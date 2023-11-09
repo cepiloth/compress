@@ -46,7 +46,7 @@
 .uploadText {
     font-weight: 600;
     color: #1f2937;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .uploadText-1-rem {
@@ -61,8 +61,8 @@
     vertical-align: baseline;
     max-width: 800px;
     margin: 8px auto 0;
-    line-height: 8px;
-    font-size: 22px;
+    line-height: 24px;
+    font-size: 24px;
     font-weight: 400;
     color: #47474f;
     @media (max-width: 800px) {
